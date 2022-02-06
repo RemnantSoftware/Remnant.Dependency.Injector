@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Company>Remnant Software</Company>
+    <Authors>Neill Verreynne</Authors>
+    <Description>Global container for dependency injection (not using constructor arguments to determine dependency)</Description>
+    <Copyright>© 2022 by Neill Verreynne</Copyright>
+    <PackageIcon>Remnant.png</PackageIcon>
+    <PackageTags>containerl;inject;dependency;transient;singleton;injection</PackageTags>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Version>1.0.2</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Pictures\Remnant.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
