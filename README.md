@@ -51,7 +51,7 @@ public class PurchaseOrder
 ```
 
 ```csharp
-// Example how to resolve on class constructor
+// Example: how to resolve on class constructor
 public class PurchaseOrder
 {
     private readonly IRepository _repository;
