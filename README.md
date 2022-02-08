@@ -79,5 +79,5 @@ public partial class PurchaseOrder
 }
 ```
 
--> the attribute argument cann be derived from the field type, but I am deciding still if I should make it optional...
+-> the attribute argument cann be derived from the field type, but I am still deciding still if I should make it optional...
 
