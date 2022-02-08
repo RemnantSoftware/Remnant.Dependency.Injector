@@ -65,7 +65,19 @@ public class PurchaseOrder
 
 ## Usage of '[Inject]' Attribute
 
-You dont need to use 'Resolve' explicitly by decorating fields with the ibject attribute.
+By decorating your fields with the inject attribute, you dont have to specify 'Resolve' explicitly.
+Remnant will use the roslyn code generator to scan fields with the attribute, and automatically generated the code.
+But that means you must specify your class as partial.
 
 
+```csharp
+// Example how to resolve on class constructor
+public partial class PurchaseOrder
+{
+    [Inject(typeof(IRepository))]
+    private readonly IRepository _repository;
+}
+```
+
+-> the attribute argument cann be derived from the field type, but I am deciding still if I should make it optional...
 
