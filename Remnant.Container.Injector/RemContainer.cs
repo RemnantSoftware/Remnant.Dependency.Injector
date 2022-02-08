@@ -8,7 +8,7 @@
 	public sealed class RemContainer
 	{
 		private static string? _name;
-		private static RemContainer _container;
+		private static RemContainer _container = null;
 		private readonly List<RemContainerObject> _containerObjects = new();
 
 		/// <summary>
