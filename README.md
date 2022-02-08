@@ -46,7 +46,8 @@ var logger = new object().Resolve<ILog>();
 // Example: how to resolve on field declaration
 public class PurchaseOrder
 {
-    private readonly IRepository _repository = RemContainer.Resolve<ILog>();
+    private readonly ILog _logger = RemContainer.Resolve<ILog>();
+    private readonly IRepository _repository = RemContainer.Resolve<IRepository>();
 }
 ```
 
@@ -54,11 +55,13 @@ public class PurchaseOrder
 // Example: how to resolve on class constructor
 public class PurchaseOrder
 {
+    private readonly ILog _logger;
     private readonly IRepository _repository;
     
     public PurchaseOrder()
     {
-        _repository = this.Resolve<ILog>();
+        _logger = this.Resolve<ILog>();
+        _repository = this.Resolve<IRepository>();
     }
 }
 ```
@@ -74,7 +77,10 @@ But that means you must specify your class as partial.
 // Example how to resolve on class constructor
 public partial class PurchaseOrder
 {
-    [Inject(typeof(IRepository))]
+    [Inject(typeof(ILog))]
+    private readonly ILog _logger;
+    
+    [Inject(typeof(IRepository))] 
     private readonly IRepository _repository;
 }
 ```
