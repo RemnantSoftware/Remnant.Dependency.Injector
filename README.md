@@ -32,20 +32,26 @@ class Program
 }
 ```
 
+### Resolve
+
 Call resolve to obtain objects from the container:
 
 ```csharp
-
-// for example the core base object can be used 
+// Example: using the core base object
 var logger = new object().Resolve<ILog>();
+```
 
-// an example how to resolve on field declaration
+
+```csharp
+// Example: how to resolve on field declaration
 public class PurchaseOrder
 {
     private readonly IRepository _repository = RemContainer.Resolve<ILog>();
 }
+```
 
-// an example how to resolve on class constructor
+```csharp
+// Example how to resolve on class constructor
 public class PurchaseOrder
 {
     private readonly IRepository _repository;
@@ -55,6 +61,11 @@ public class PurchaseOrder
         _repository = this.Resolve<ILog>();
     }
 }
-
-
 ```
+
+## Usage of '[Inject]' Attribute
+
+You dont need to use 'Resolve' explicitly by decorating fields with the ibject attribute.
+
+
+
