@@ -1,54 +1,60 @@
 # Remnant Container Injector
-Global container for dependency injection (not using constructor arguments to determine dependency)
 
-Unlike current DI container solutions which are following a push inject pattern, this solution uses a pull inject pattern.
+##Overview
 
-# Source Generators Cookbook
+- The injection is a pull pattern unlike all other DI containers which follows a push pattern.
+- The pull pattern has no need to declare constructor arguments for DI and no hierarchical DI wiring.
+- The container is globally instantatied within the current app domain.
+- Anywhere, anyplace in your code the container can be requested (pull) to resolve your request.
+- A extension 'Resolve' method is implemented on 'object' to allow any object to request an object from the container. 
+- You can use the [Inject] attribute on fields which will automatically the type that is requested.
+- The pull pattern nullifies the need for transient objects (no wiring required). So basically only singletons need to be registered.
 
-## Summary
+> **Note**: The design and implementation is still in beta, nuget pacakge(s) will be published later.
+> Also class names not finalized and may change.
 
-> **Note**: The design for the source generator proposal is still under review. This document uses only one possible syntax, and
-> it is expected to change without notice as the feature evolves.
-> 
-- Generators produce one or more strings that represent C# source code to be added to the compilation.
-- Explicitly _additive_ only. Generators can add new source code to a compilation but may **not** modify existing user code.
-- Can produce diagnostics. When unable to generate source, the generator can inform the user of the problem.
-- May access _additional files_, that is, non-C# source texts.
-- Run _un-ordered_, each generator will see the same input compilation, with no access to files created by other source generators.
-- A user specifies the generators to run via list of assemblies, much like analyzers.
+## Usage:
 
+### Container
 
-## Conventions
-
-TODO: List a set of general conventions that apply to all designs below. E.g. Re-using namespaces, generated file names etc.
-
-## Designs
-
-This section is broken down by user scenarios, with general solutions listed first, and more specific examples later on.
-
-### Generated class
-
-**User scenario:** As a generator author I want to be able to add a type to the compilation, that can be referenced by the user's code.
-
-**Solution:** Have the user write the code as if the type was already present. Generate the missing type based on information available in the compilation.
-
-**Example:**
-
-Given the following user code:
+Construct the container and register components:
 
 ```csharp
-public partial class UserClass
+class Program
 {
-    public void UserMethod()
+    public static async Task Main()
     {
-        // call into a generated method
-        GeneratedNamespace.GeneratedClass.GeneratedMethod();
+        RemContainer
+            .Create("MyContainer")
+            .Register<ILog>(new MyLogger())
+            .Register<IRepository>(new MyRepository());
     }
 }
 ```
 
-Create a generator that will create the missing type when run:
+Call resolve to obtain objects from the container:
 
 ```csharp
+
+// for example the core base object can be used 
+var logger = new object().Resolve<ILog>();
+
+// an example how to resolve on field declaration
+public class PurchaseOrder
+{
+    private readonly IRepository _repository = RemContainer.Resolve<ILog>();
+}
+
+// an example how to resolve on class constructor
+public class PurchaseOrder
+{
+    private readonly IRepository _repository;
+    
+    public PurchaseOrder()
+    {
+        _repository = this.Resolve<ILog>();
+    }
+}
+
 
 ```
