@@ -69,7 +69,7 @@ public class PurchaseOrder
 ## Usage of '[Inject]' Attribute
 
 By decorating your fields with the inject attribute, you dont have to specify 'Resolve' explicitly.
-Remnant will use the roslyn code generator to scan fields with the attribute, and automatically generated the code.
+Remnant will use the roslyn code generator to scan fields with the attribute, and automatically generate the code.
 But that means you must specify your class as partial.
 
 
