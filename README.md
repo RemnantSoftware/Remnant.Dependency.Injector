@@ -5,7 +5,7 @@
 - The injection is a pull pattern unlike all other DI containers which follows a push pattern.
 - The pull pattern has no need to declare constructor arguments for DI, and also no hierarchical DI wiring is required.
 - The container is globally instantiated within your current app domain.
-- Anywhere, anyplace in your code the container can be requested to resolve your request.
+- Anywhere, anyplace in your code the container can be requested to resolve the object needed.
 - A extension method 'Resolve' is implemented on 'object' to allow any objects to call the container. 
 - You can use the [Inject] attribute on fields which will automatically inject the object.
 - The pull pattern nullifies the need for transient objects (cause no wiring dependencies needed). So basically only singletons need to be registered.
