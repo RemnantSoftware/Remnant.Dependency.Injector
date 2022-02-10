@@ -10,7 +10,7 @@
 - You can use the [Inject] attribute on fields which will automatically inject the object.
 - The pull pattern nullifies the need for transient objects (cause no wiring dependencies needed). So basically only singletons need to be registered.
 
-> **Note**: To use [Inject] attribute of class fields, the class must be specified as partial.
+> **Note**: To use [Inject] attribute to decorate class fields, the class must be specified as partial.
 
 ## Nuget packages:
 
