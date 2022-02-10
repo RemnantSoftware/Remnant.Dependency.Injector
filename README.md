@@ -47,7 +47,7 @@ class Program
 }
 ```
 
-### '[Inject]' Attribute
+### [Inject] Attribute
 
 By decorating your fields with the inject attribute, you dont have to specify 'Resolve' explicitly.
 Remnant will use the roslyn code generator to scan fields with the attribute, and automatically generate the code.
