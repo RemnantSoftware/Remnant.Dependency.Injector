@@ -80,7 +80,7 @@ public partial class PurchaseOrder
 }
 ```
 
-### Resolve
+### Manually Resolve (not using the [Inject] attribute)
 
 Call resolve to obtain objects from the container:
 
