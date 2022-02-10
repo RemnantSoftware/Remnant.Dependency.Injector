@@ -40,6 +40,17 @@ namespace Remnant.Dependency.Injector
 			return _container;
 		}
 
+
+		public static Container Instance
+		{
+			get
+			{
+				if (_container == null)
+					throw new ApplicationException("The container has not been created. Please use Container.Create([container name]) first.");
+				return _container;
+			}
+		}
+
 		/// <summary>
 		/// Resolve using static on container class
 		/// </summary>
@@ -121,7 +132,7 @@ namespace Remnant.Dependency.Injector
 		/// Deregister a container entry using generic type
 		/// </summary>
 		/// <typeparam name="TType">The type that was registered</typeparam>
-		public void DeRegister<TType>()
+		public Container DeRegister<TType>()
 			where TType : class
 		{
 			var containerObject = _containerObjects.FirstOrDefault((m => m.Type == typeof(TType)));
@@ -130,13 +141,14 @@ namespace Remnant.Dependency.Injector
 			{
 				_containerObjects.Remove(containerObject);
 			}
+			return this;
 		}
 
 		/// <summary>
 		/// Deregister a container entry using instance
 		/// </summary>
 		/// <param name="instance">The type of instance that will be removed from the container</param>
-		public void DeRegister(object instance)
+		public Container DeRegister(object instance)
 		{
 			var containerObject = _containerObjects.FirstOrDefault((m => m.Type == instance.GetType()));
 
@@ -144,15 +156,17 @@ namespace Remnant.Dependency.Injector
 			{
 				_containerObjects.Remove(containerObject);
 			}
+			return this;
 		}
 
 		/// <summary>
 		/// Clear container from all registeries
 		/// </summary>
 
-		public void Clear()
+		public Container Clear()
 		{
 			_containerObjects.Clear();
+			return this;
 		}
 
 
