@@ -9,12 +9,12 @@
 
   <PropertyGroup>
     <PackageId>Remnant.Dependency.Injector.Analyzer</PackageId>
-    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Authors>Neill Verreynne</Authors>
     <RepositoryUrl>https://github.com/RemnantSoftware/Remnant.Dependency.Injector</RepositoryUrl>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <Description>Container for dependency injection analyzer using pull pattern (no transient types needed)</Description>
-    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <Copyright>© 2022 by Neill Verreynne</Copyright>
     <PackageIcon>Remnant.png</PackageIcon>
     <PackageTags>container;inject;dependency;transient;singleton;injection;pull;global</PackageTags>
