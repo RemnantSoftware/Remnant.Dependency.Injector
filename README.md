@@ -10,8 +10,17 @@
 - You can use the [Inject] attribute on fields which will automatically inject the object.
 - The pull pattern nullifies the need for transient objects (cause no wiring dependencies needed). So basically only singletons need to be registered.
 
-> **Note**: The design and implementation is still in beta, nuget pacakge(s) will be published later.
-> Also class names not finalized and may change.
+> **Note**: To use [Inject] attribute of class fields, the class must be specified as partial.
+
+## Nuget packages:
+- Core package exluding the analyzer: 
+- Anaylzer package to use [Inject] attribute: 
+
+> **Note**: I suggest you install both packages and use [Inject] attribute for injection.
+> The anaylzer does the following when [Inject] attribute is detected on a class field:
+> 1. It generates a partial class with a method called 'Inject()'
+> 2. If the class has no default constructor (no arguments), the analyzer generates the constructor to inject the fields
+> 3. If the class already contains a default constructor (no arguments), the analyzer generates a static method 'Create()' which constructs the class, and calls 'Inject()' to inject the fields
 
 ## Usage:
 
