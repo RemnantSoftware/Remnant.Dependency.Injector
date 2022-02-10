@@ -19,7 +19,7 @@
 > **Note**: I suggest you install both packages and use [Inject] attribute for injection.
 > The anaylzer does the following when [Inject] attribute is detected on a class field:
 > 1. It generates a partial class with a method called 'Inject()'
-> 2. If the class has no default constructor (no arguments), the analyzer generates the constructor to inject the fields
+> 2. If the class has no default constructor (no arguments), the analyzer generates the constructor, and calls 'Inject()' to inject the fields
 > 3. If the class already contains a default constructor (no arguments), the analyzer generates a static method 'Create()' which constructs the class, and calls 'Inject()' to inject the fields
 
 ## Usage:
@@ -38,6 +38,39 @@ class Program
             .Register<ILog>(new MyLogger())
             .Register<IRepository>(new MyRepository());
     }
+}
+```
+
+### '[Inject]' Attribute
+
+By decorating your fields with the inject attribute, you dont have to specify 'Resolve' explicitly.
+Remnant will use the roslyn code generator to scan fields with the attribute, and automatically generate the code.
+But that means you must specify your class as partial.
+
+
+```csharp
+// Example of specifying the type
+public partial class PurchaseOrder
+{
+    [Inject(typeof(ILog))]
+    private readonly ILog _logger;
+    
+    [Inject(typeof(IRepository))] 
+    private readonly IRepository _repository;
+}
+```
+
+The 'Type' passed to the [Inject] attribute is optional, and the underlying decorated class field's data type is inferred
+
+```csharp
+// Example of using the inferred field's data type
+public partial class PurchaseOrder
+{
+    [Inject]
+    private readonly ILog _logger;
+    
+    [Inject] 
+    private readonly IRepository _repository;
 }
 ```
 
@@ -74,25 +107,4 @@ public class PurchaseOrder
     }
 }
 ```
-
-## Usage of '[Inject]' Attribute
-
-By decorating your fields with the inject attribute, you dont have to specify 'Resolve' explicitly.
-Remnant will use the roslyn code generator to scan fields with the attribute, and automatically generate the code.
-But that means you must specify your class as partial.
-
-
-```csharp
-// Example how to resolve on class constructor
-public partial class PurchaseOrder
-{
-    [Inject(typeof(ILog))]
-    private readonly ILog _logger;
-    
-    [Inject(typeof(IRepository))] 
-    private readonly IRepository _repository;
-}
-```
-
--> the attribute argument I can derive from the field type, but I am still deciding if I should make it optional or remove it...
 
