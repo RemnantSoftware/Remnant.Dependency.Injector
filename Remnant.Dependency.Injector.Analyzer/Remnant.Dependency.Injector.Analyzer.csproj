@@ -12,13 +12,13 @@
     <PackageVersion>1.0.0.0</PackageVersion>
     <Authors>Neill Verreynne</Authors>
     <RepositoryUrl>https://github.com/RemnantSoftware/Remnant.Dependency.Injector</RepositoryUrl>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <Description>Container for dependency injection analyzer using pull pattern (no transient types needed)</Description>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
     <Copyright>© 2022 by Neill Verreynne</Copyright>
     <PackageIcon>Remnant.png</PackageIcon>
-    <PackageTags>container;inject;dependency;transient;singleton;injection;pull;global</PackageTags>		
-		
+    <PackageTags>container;inject;dependency;transient;singleton;injection;pull;global</PackageTags>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
     <DevelopmentDependency>true</DevelopmentDependency>
     <NoPackageAnalysis>true</NoPackageAnalysis>
 
@@ -27,14 +27,13 @@
     <Version>1.0.0</Version>
 
     <Company>Remnant Software</Company>
-  </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\..\Pictures\Remnant.png" Link="Remnant.png">
-      <PackagePath>\</PackagePath>
-      <Pack>True</Pack>
-    </None>
-  </ItemGroup>
+    <RepositoryType>git</RepositoryType>
+
+    <NeutralLanguage>en</NeutralLanguage>
+
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis" Version="3.11.0" />
@@ -46,6 +45,17 @@
 
   <ItemGroup>
     <None Update="tools\*.ps1" CopyToOutputDirectory="Always" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Remnant.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+		<None Include="LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 
   <Target Name="_AddAnalyzersToOutput">
