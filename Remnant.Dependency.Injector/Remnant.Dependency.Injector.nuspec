@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Remnant.Dependency.Injector</id>
+    <version>1.0.0</version>
+    <authors>Neill Verreynne</authors>
+    <owners>Neill Verreynne</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Container for dependency injection using pull pattern (no transient types needed)</description>
+    <dependencies>
+
+    </dependencies>
+		<dependency id="Remnant.Dependency.Injector.Analyzer" version="1.0.*"/>
+  </metadata>
+</package>

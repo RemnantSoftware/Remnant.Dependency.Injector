@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Company>Remnant Software</Company>
+    <Authors>Neill Verreynne</Authors>
+    <Description>Container for dependency injection using pull pattern (no transient types needed)</Description>
+    <Copyright>© 2022 by Neill Verreynne</Copyright>
+    <PackageIcon>Remnant.png</PackageIcon>
+    <PackageTags>container;inject;dependency;transient;singleton;injection;pull;global</PackageTags>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Version>1.0.0</Version>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/RemnantSoftware/Remnant.Dependency.Injector</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Pictures\Remnant.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
