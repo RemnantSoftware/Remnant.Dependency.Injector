@@ -13,8 +13,14 @@
 > **Note**: To use [Inject] attribute of class fields, the class must be specified as partial.
 
 ## Nuget packages:
+
 - Core package exluding the analyzer: 
+
+        Install-Package Remnant.Dependency.Injector.Analyzer -Version 1.0.0
+
 - Anaylzer package to use [Inject] attribute: 
+
+        Install-Package Remnant.Dependency.Injector.Analyzer -Version 1.0.0
 
 > **Note**: I suggest you install both packages and use [Inject] attribute for injection.
 > The anaylzer does the following when [Inject] attribute is detected on a class field:
