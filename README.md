@@ -39,7 +39,7 @@ class Program
 {
     public static async Task Main()
     {
-        RemContainer
+          Container
             .Create("MyContainer")
             .Register<ILog>(new MyLogger())
             .Register<IRepository>(new MyRepository());
@@ -94,8 +94,8 @@ var logger = new object().Resolve<ILog>();
 // Example: how to resolve on field declaration
 public class PurchaseOrder
 {
-    private readonly ILog _logger = RemContainer.Resolve<ILog>();
-    private readonly IRepository _repository = RemContainer.Resolve<IRepository>();
+    private readonly ILog _logger = Container.Resolve<ILog>();
+    private readonly IRepository _repository = Container.Resolve<IRepository>();
 }
 ```
 
