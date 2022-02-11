@@ -14,7 +14,7 @@
 
 ## Nuget packages:
 
-- Core package exluding the analyzer: 
+- Core package excluding the analyzer: 
 
         Install-Package Remnant.Dependency.Injector -Version 1.0.1
 
