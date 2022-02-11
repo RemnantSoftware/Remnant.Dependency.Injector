@@ -27,6 +27,8 @@
 > 1. It generates a partial class with a method called 'Inject()'
 > 2. If the class has no default constructor (no arguments), the analyzer generates the constructor, and calls 'Inject()' to inject the fields
 > 3. If the class already has a default constructor (no arguments), the analyzer generates a static method 'Create()' which constructs the class, and calls 'Inject()' to inject the fields
+> 4. Since the constructor or the create methods calls the method 'Inject()', your class fields cant be 'readonly'.
+        
 
 ## Usage:
 
