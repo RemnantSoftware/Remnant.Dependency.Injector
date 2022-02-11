@@ -23,7 +23,7 @@
         Install-Package Remnant.Dependency.Injector.Analyzer -Version 1.0.1
 
 > **Note**: I suggest you install both packages and use [Inject] attribute for injection.
-> The anaylzer does the following when [Inject] attribute is detected on a class field:
+> The analyzer does the following when [Inject] attribute is detected on a class field:
 > 1. It generates a partial class with a method called 'Inject()'
 > 2. If the class has no default constructor (no arguments), the analyzer generates the constructor, and calls 'Inject()' to inject the fields
 > 3. If the class already has a default constructor (no arguments), the analyzer generates a static method 'Create()' which constructs the class, and calls 'Inject()' to inject the fields
