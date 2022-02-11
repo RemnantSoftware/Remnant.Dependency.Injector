@@ -1,4 +1,4 @@
-# Remnant Dependency Injector
+# Remnant Dependency Injector (beta)
 
 ## Overview
 
