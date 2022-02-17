@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Remnant.Dependency.Interface;
+using System;
 
 namespace Remnant.Dependency.Injector
 {
@@ -22,10 +23,10 @@ namespace Remnant.Dependency.Injector
 
 			var container = AppDomain.CurrentDomain.GetData((string)containerName);
 
-			if (container == null || container as Container == null)
+			if (container == null || container as IContainer == null)
 				throw new NullReferenceException($"The container registered as '{containerName}' doesn't exist within the app domain.");
 
-			var instance = (container as Container).ResolveInstance<TType>();
+			var instance = (container as IContainer).ResolveInstance<TType>();
 
 			if (instance == null)
 				throw new ArgumentException($"The container cannot resolve requested object '{typeof(TType).FullName}'.");

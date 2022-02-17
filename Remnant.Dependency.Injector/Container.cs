@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Remnant.Dependency.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,10 +10,10 @@ namespace Remnant.Dependency.Injector
 	/// 	The object class is extended with 'Resolve<TType> method and any object anywhere in your code can call:
 	///	var instance = Resolve<TType>();
 	/// </summary>
-	public sealed class Container
+	public sealed class Container : IContainer
 	{
 		private static string _name;
-		private static Container _container = null;
+		private static IContainer _container = null;
 		private readonly List<ContainerObject> _containerObjects = new List<ContainerObject>();
 
 		/// <summary>
@@ -23,7 +24,7 @@ namespace Remnant.Dependency.Injector
 		/// <returns>Returns the container instance</returns>
 		/// <exception cref="ArgumentNullException"></exception>
 		/// <exception cref="InvalidOperationException"></exception>
-		public static Container Create(string name)
+		public static IContainer Create(string name, IContainer container = null)
 		{
 			if (string.IsNullOrEmpty(name))
 				throw new ArgumentNullException("The name of the container cannot be null or empty.");
@@ -34,14 +35,16 @@ namespace Remnant.Dependency.Injector
 
 			_name = name;
 
-			_container = new Container();
+			_container = container ?? new RemnantContainer();
 			AppDomain.CurrentDomain.SetData(name, _container);
 			AppDomain.CurrentDomain.SetData("RemnantContainer", name);
 			return _container;
 		}
 
-
-		public static Container Instance
+		/// <summary>
+		/// To get direct access to the container instance
+		/// </summary>
+		public static IContainer Instance
 		{
 			get
 			{
@@ -83,9 +86,9 @@ namespace Remnant.Dependency.Injector
 		/// <typeparam name="TType">The type that will be used to resolve the singleton entry</typeparam>
 		/// <param name="instance">The singleton instance</param>
 		/// <returns>Returns the container</returns>
-		public Container Register<TType>(object instance) where TType : class
+		public IContainer Register<TType>(TType instance) where TType : class
 		{
-			AddObject(new ContainerObject(typeof(TType), instance.GetType(), instance));
+			_container.Register(instance);
 			return this;
 		}
 
@@ -94,9 +97,9 @@ namespace Remnant.Dependency.Injector
 		/// </summary>
 		/// <param name="instance">The singelton instance</param>
 		/// <returns>Returns the container</returns>
-		public Container Register(object instance)
+		public IContainer Register(object instance)
 		{
-			AddObject(new ContainerObject(instance.GetType(), instance.GetType(), instance));
+			_container.Register(new ContainerObject(instance.GetType(), instance.GetType(), instance));
 			return this;
 		}
 
@@ -105,7 +108,7 @@ namespace Remnant.Dependency.Injector
 		/// </summary>
 		/// <typeparam name="TType">The type that will be used to resolve and construct entry</typeparam>
 		/// <returns>Returns the container</returns>
-		public Container Register<TType>() where TType : class, new()
+		public IContainer Register<TType>() where TType : class, new()
 		{
 			Register<TType, TType>();
 			return this;
@@ -117,14 +120,11 @@ namespace Remnant.Dependency.Injector
 		/// <typeparam name="TType">The type that will be used to resolve entry</typeparam>
 		/// <typeparam name="TObject">The type that will be constructed and return on resolve</typeparam>
 		/// <returns>Returns the container</returns>
-		public Container Register<TType, TObject>()
+		public IContainer Register<TType, TObject>()
 			where TType : class
 			where TObject : class, new()
 		{
-			//Register<TType>(new TObject());
-
-			_containerObjects.Add(new ContainerObject(typeof(TType), typeof(TObject), null));
-
+			_container.Register<TType, TObject>();
 			return this;
 		}
 
@@ -132,15 +132,10 @@ namespace Remnant.Dependency.Injector
 		/// Deregister a container entry using generic type
 		/// </summary>
 		/// <typeparam name="TType">The type that was registered</typeparam>
-		public Container DeRegister<TType>()
+		public IContainer DeRegister<TType>()
 			where TType : class
 		{
-			var containerObject = _containerObjects.FirstOrDefault((m => m.Type == typeof(TType)));
-
-			if (containerObject != null)
-			{
-				_containerObjects.Remove(containerObject);
-			}
+			_container.DeRegister<TType>();
 			return this;
 		}
 
@@ -148,24 +143,18 @@ namespace Remnant.Dependency.Injector
 		/// Deregister a container entry using instance
 		/// </summary>
 		/// <param name="instance">The type of instance that will be removed from the container</param>
-		public Container DeRegister(object instance)
+		public IContainer DeRegister(object instance)
 		{
-			var containerObject = _containerObjects.FirstOrDefault((m => m.Type == instance.GetType()));
-
-			if (containerObject != null)
-			{
-				_containerObjects.Remove(containerObject);
-			}
+			_container.DeRegister(instance);
 			return this;
 		}
 
 		/// <summary>
 		/// Clear container from all registeries
 		/// </summary>
-
-		public Container Clear()
+		public IContainer Clear()
 		{
-			_containerObjects.Clear();
+			_container.Clear();
 			return this;
 		}
 
@@ -178,17 +167,7 @@ namespace Remnant.Dependency.Injector
 		public TType ResolveInstance<TType>()
 			where TType : class
 		{
-			ContainerObject containerObject = null;
-
-			if (_containerObjects.Exists(m => m.Type == typeof(TType)))
-				containerObject = _containerObjects.FirstOrDefault(m => m.Type == typeof(TType));
-
-			if (containerObject == null)
-				throw new ArgumentException($"The container cannot resolve requested object '{typeof(TType).FullName}'.");
-
-			return containerObject.Object != null
-				? (TType)containerObject.Object
-				: (TType)Activator.CreateInstance(containerObject.ObjectType);	
+			return _container.ResolveInstance<TType>();	
 		}
 	}
 }
