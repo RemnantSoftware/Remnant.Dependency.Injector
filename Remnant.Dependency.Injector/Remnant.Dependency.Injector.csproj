@@ -5,12 +5,12 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Company>Remnant Software</Company>
     <Authors>Neill Verreynne</Authors>
-    <Description>Container for dependency injection using pull pattern (no transient types needed)</Description>
+    <Description>Container for dependency injection using pull pattern. Caters for exisiting DI solutions via adapaters.</Description>
     <Copyright>© 2022 by Neill Verreynne</Copyright>
     <PackageIcon>Remnant.png</PackageIcon>
     <PackageTags>container;inject;dependency;transient;singleton;injection;pull;global</PackageTags>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/RemnantSoftware/Remnant.Dependency.Injector</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -18,19 +18,32 @@
     <PackageReleaseNotes>First release</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\Remnant.Dependency.Injector.Analyzer\Remnant.png">
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-		<None Include="LICENSE" Pack="true" PackagePath=""/>
+		<None Include="LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Remnant.Dependency.Injector.Analyzer" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Remnant.Dependency.Interface" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="LICENSE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Remnant.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 </Project>
