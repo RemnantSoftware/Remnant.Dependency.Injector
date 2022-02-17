@@ -29,7 +29,7 @@
 > 3. If the class already has a default constructor (no arguments), the analyzer generates a static method 'Create()' which constructs the class, and calls 'Inject()' to inject the fields
 > 4. Since the constructor or the create methods calls the method 'Inject()', your class fields cant be 'readonly'.
         
-## See the following adapters, if you don't want to utilize the default container:
+## Adapters for other DI containers:
         
 > https://github.com/RemnantSoftware/Remnant.Dependency.Unity
         
