@@ -11,6 +11,7 @@
 - The pull pattern nullifies the need for transient objects (cause no wiring dependencies needed). So basically only singletons need to be registered.
 
 > **Note**: To use [Inject] attribute to decorate class fields, the class must be specified as partial.
+> **Note**: The unit tests in the Tests project must be run per DI container for testing (only one registered container is allowed in the app domain). 
 
 ## Nuget packages:
 
@@ -23,11 +24,6 @@
         Install-Package Remnant.Dependency.Injector.Analyzer -Version 1.0.1
 
 > **Note**: I suggest you install both packages and use [Inject] attribute for injection.
-> The analyzer does the following when [Inject] attribute is detected on a class field:
-> 1. It generates a partial class with a method called 'Inject()'
-> 2. If the class has no default constructor (no arguments), the analyzer generates the constructor, and calls 'Inject()' to inject the fields
-> 3. If the class already has a default constructor (no arguments), the analyzer generates a static method 'Create()' which constructs the class, and calls 'Inject()' to inject the fields
-> 4. Since the constructor or the create methods calls the method 'Inject()', your class fields cant be 'readonly'.
         
 ## Adapters for other DI containers:
         
