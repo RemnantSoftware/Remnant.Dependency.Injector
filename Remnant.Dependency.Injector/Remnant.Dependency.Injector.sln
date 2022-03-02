@@ -26,6 +26,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Remnant.Dependency.Interfac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Remnant.Dependency.Injector.Analyzer", "..\..\Remnant.Dependency.Injector.Analyzer\Remnant.Dependency.Injector.Analyzer.csproj", "{97E8C996-51C4-4012-B948-582ABFD5241A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A14C53AB-9346-4ECC-BF08-9A22798F2B7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Remnant.Dependeny.Injector.Tests", "..\Tests\Remnant.Dependeny.Injector.Tests.csproj", "{CB512C66-2501-406F-BCBE-29B946577A6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +68,10 @@ Global
 		{97E8C996-51C4-4012-B948-582ABFD5241A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97E8C996-51C4-4012-B948-582ABFD5241A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97E8C996-51C4-4012-B948-582ABFD5241A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB512C66-2501-406F-BCBE-29B946577A6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB512C66-2501-406F-BCBE-29B946577A6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB512C66-2501-406F-BCBE-29B946577A6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB512C66-2501-406F-BCBE-29B946577A6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +82,7 @@ Global
 		{63427F5C-1E8D-4AB3-9BAE-4356F21B8148} = {BA5CEA4F-777C-4C28-B3CA-F2EEF6B2D0A6}
 		{1D1FCAF3-8A53-4657-90EA-0A5A462F9A20} = {BA5CEA4F-777C-4C28-B3CA-F2EEF6B2D0A6}
 		{6EE0C393-49EB-4BC2-8D3A-8F6798535A64} = {BA5CEA4F-777C-4C28-B3CA-F2EEF6B2D0A6}
+		{CB512C66-2501-406F-BCBE-29B946577A6F} = {A14C53AB-9346-4ECC-BF08-9A22798F2B7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE92C748-309D-418B-B6BE-74E950324A2E}

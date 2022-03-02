@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
+    <PackageReference Include="coverlet.collector" Version="3.1.0" />
+    <PackageReference Include="Remnant.Dependency.Autofac" Version="1.0.0" />
+    <PackageReference Include="Remnant.Dependency.CastleWindsor" Version="1.0.0" />
+    <PackageReference Include="Remnant.Dependency.Injector" Version="1.0.2" />
+    <PackageReference Include="Remnant.Dependency.Injector.Analyzer" Version="1.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Remnant.Dependency.Ninject" Version="1.0.0" />
+    <PackageReference Include="Remnant.Dependency.SimpleInjector" Version="1.0.0" />
+    <PackageReference Include="Remnant.Dependency.Unity" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
