@@ -133,4 +133,40 @@ public partial class PurchaseOrder
 }
 ```
 
-
+```csharp
+// Example of using the static 'Create', fields cannot be read only
+public partial class PurchaseOrder
+{
+    [Inject]
+    private ILog _logger;
+    
+    [Inject] 
+    private IRepository _repository;
+        
+    public PurchaseOrder()
+    {
+       //...do some stuff   
+    }
+}
+        
+var purchaseOrder = PurchaseOrder.Create();
+```
+        
+```csharp
+// Example of calling 'Inject' explicitly, fields cannot be read only
+public partial class PurchaseOrder
+{
+    [Inject]
+    private ILog _logger;
+    
+    [Inject] 
+    private IRepository _repository;
+    
+    public PurchaseOrder()
+    {
+        Inject();
+        
+       //...do some stuff   
+    }
+}
+```
