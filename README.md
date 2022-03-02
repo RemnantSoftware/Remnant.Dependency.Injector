@@ -58,6 +58,40 @@ class Program
     }
 }
 ```
+        
+### Manually Resolve (not using the [Inject] attribute)
+
+Call resolve to obtain objects from the container:
+
+```csharp
+// Example: using the core base object
+var logger = new object().Resolve<ILog>();
+```
+
+
+```csharp
+// Example: how to resolve on field declaration
+public class PurchaseOrder
+{
+    private readonly ILog _logger = Container.Resolve<ILog>();
+    private readonly IRepository _repository = Container.Resolve<IRepository>();
+}
+```
+
+```csharp
+// Example: how to resolve on class constructor
+public class PurchaseOrder
+{
+    private readonly ILog _logger;
+    private readonly IRepository _repository;
+    
+    public PurchaseOrder()
+    {
+        _logger = this.Resolve<ILog>();
+        _repository = this.Resolve<IRepository>();
+    }
+}
+```
 
 ### [Inject] Attribute
 
@@ -99,37 +133,4 @@ public partial class PurchaseOrder
 }
 ```
 
-### Manually Resolve (not using the [Inject] attribute)
-
-Call resolve to obtain objects from the container:
-
-```csharp
-// Example: using the core base object
-var logger = new object().Resolve<ILog>();
-```
-
-
-```csharp
-// Example: how to resolve on field declaration
-public class PurchaseOrder
-{
-    private readonly ILog _logger = Container.Resolve<ILog>();
-    private readonly IRepository _repository = Container.Resolve<IRepository>();
-}
-```
-
-```csharp
-// Example: how to resolve on class constructor
-public class PurchaseOrder
-{
-    private readonly ILog _logger;
-    private readonly IRepository _repository;
-    
-    public PurchaseOrder()
-    {
-        _logger = this.Resolve<ILog>();
-        _repository = this.Resolve<IRepository>();
-    }
-}
-```
 
