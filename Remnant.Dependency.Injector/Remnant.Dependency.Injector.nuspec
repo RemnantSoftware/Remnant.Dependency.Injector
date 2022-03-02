@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Remnant.Dependency.Injector</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <authors>Neill Verreynne</authors>
     <owners>Neill Verreynne</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,7 +10,7 @@
     <dependencies>
 
     </dependencies>
-		<dependency id="Remnant.Dependency.Injector.Analyzer" version="1.0.2"/>
+		<dependency id="Remnant.Dependency.Injector.Analyzer" version="1.0.3"/>
 		<dependency id="Remnant.Dependency.Interface" version="1.0.0"/>
   </metadata>
 </package>
