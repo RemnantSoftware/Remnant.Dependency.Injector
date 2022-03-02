@@ -64,6 +64,13 @@ class Program
 By decorating your fields with the inject attribute, you dont have to specify 'Resolve' explicitly.
 Remnant will use the roslyn code generator to scan fields with the attribute, and automatically generate the code.
 But that means you must specify your class as partial.
+        
+#### Important, if your class has already a constructor method implemented: 
+The analyzer can't generate a constructor with the injection code because the method exists already. 
+In that case the Analyzer generates a public 'Inject' method, as well as a static 'Create' method on the class. 
+So you can call the static 'Create' method which will create an instance of the class and it calls the 'Inject' method to perform the injection. 
+Or you can instantiate the class and call the 'Inject' method yourself. Keep in mind that your constructor implementation all the injected 
+fields will be null unless you explicitly call the method 'Inject' on your constructor before accessing the fields.
 
 
 ```csharp
