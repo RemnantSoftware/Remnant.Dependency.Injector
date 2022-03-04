@@ -59,6 +59,19 @@ class Program
 }
 ```
         
+If you need to perform additional registrations/resolves at other places, you can access the instance of the container as follows:
+```csharp        
+class Program
+{
+    public static async Task Initializ()
+    {
+          Container
+            .Instance
+            .Register<IConfiguration>(new AzureAppConfig());
+    }
+}
+```
+        
 ### Manually Resolve (not using the [Inject] attribute)
 
 Call resolve to obtain objects from the container:
