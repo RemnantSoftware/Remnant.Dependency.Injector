@@ -71,6 +71,8 @@ class Program
     }
 }
 ```
+ 
+----------        
         
 ### Manually Resolve (not using the [Inject] attribute)
 
@@ -106,6 +108,8 @@ public class PurchaseOrder
 }
 ```
 
+-------
+        
 ### [Inject] Attribute
 
 By decorating your fields with the inject attribute, you dont have to specify 'Resolve' explicitly.
