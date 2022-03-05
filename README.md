@@ -170,7 +170,7 @@ public partial class PurchaseOrder
     }
 }
         
-var purchaseOrder = PurchaseOrder.Create();
+var purchaseOrder = PurchaseOrder.Create(); // this will instantiate the class and calls 'Inject' to resolve the fields.
 ```
         
 ```csharp
