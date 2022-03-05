@@ -18,7 +18,7 @@
 
 - Core package excluding the analyzer: 
 
-        Install-Package Remnant.Dependency.Injector -Version 1.0.3
+        Install-Package Remnant.Dependency.Injector -Version 1.0.4
 
 - Anaylzer package to use [Inject] attribute: 
 
