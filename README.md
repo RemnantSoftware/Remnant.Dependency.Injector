@@ -5,7 +5,7 @@
 - The injection is a pull pattern unlike all other DI containers which follows a push pattern.
 - The pull pattern has no need to declare constructor arguments for DI, and also no hierarchical DI wiring is required.
 - The container is globally instantiated within your current app domain.
-- Anywhere, anyplace in your code the container can be requested to resolve the object needed.
+- Anywhere, any place in your code the container can be requested to resolve the object needed.
 - An extension method 'Resolve<<TType>>' is implemented on 'object' to allow any objects to call the container. 
 - You can use the [Inject] attribute on fields which will automatically inject the object.
 - The pull pattern nullifies the need for transient objects (cause no wiring dependencies needed). So basically only singletons need to be registered.
@@ -63,7 +63,7 @@ If you need to perform additional registrations/resolves at other places, you ca
 ```csharp        
 class Program
 {
-    public static async Task Initializ()
+    public static async Task Initialize()
     {
           Container
             .Instance
