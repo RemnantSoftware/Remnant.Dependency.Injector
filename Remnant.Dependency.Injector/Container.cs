@@ -86,9 +86,21 @@ namespace Remnant.Dependency.Injector
 		/// <typeparam name="TType">The type that will be used to resolve the singleton entry</typeparam>
 		/// <param name="instance">The singleton instance</param>
 		/// <returns>Returns the container</returns>
-		public IContainer Register<TType>(TType instance) where TType : class
+		public IContainer Register<TType>(object instance) where TType : class
 		{
-			_container.Register(instance);
+			_container.Register<TType>(instance);
+			return this;
+		}
+
+		/// <summary>
+		/// Register a singleton with the container
+		/// </summary>
+		/// <param name="type">The type that will be used to resolve the singleton entry</param>
+		/// <param name="instance">The singelton instance</param>
+		/// <returns>Returns the container</returns>
+		public IContainer Register(Type type, object instance)
+		{
+			_container.Register(type, instance);
 			return this;
 		}
 
@@ -99,7 +111,7 @@ namespace Remnant.Dependency.Injector
 		/// <returns>Returns the container</returns>
 		public IContainer Register(object instance)
 		{
-			_container.Register(new ContainerObject(instance.GetType(), instance.GetType(), instance));
+			_container.Register(instance.GetType(), instance);
 			return this;
 		}
 

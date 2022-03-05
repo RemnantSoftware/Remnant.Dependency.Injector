@@ -14,6 +14,7 @@ namespace Remnant.Dependeny.Injector.Tests
 			SetContainer(Container.Create("MyContainer", adapter));
 			
 			Assert.IsNotNull(adapter.Resolve<IAnimal>());
+			Assert.IsNotNull(adapter.Resolve<Dog>());
 		}
 	}
 }

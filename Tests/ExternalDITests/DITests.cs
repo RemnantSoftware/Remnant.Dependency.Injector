@@ -14,6 +14,7 @@ namespace Remnant.Dependeny.Injector.Tests
 		{
 			_container = container;
 			Container.Instance.Register<IAnimal>(new Dog());
+			Container.Instance.Register<Dog>(new Dog());
 		}
 
 		[Test]

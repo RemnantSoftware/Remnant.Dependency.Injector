@@ -26,9 +26,15 @@ namespace Remnant.Dependency.Injector
 			return containerObject;
 		}
 
-		public IContainer Register<TType>(TType instance) where TType : class
+		public IContainer Register<TType>(object instance) where TType : class
 		{
 			AddObject(new ContainerObject(typeof(TType), instance.GetType(), instance));
+			return this;
+		}
+
+		public IContainer Register(Type type, object instance)
+		{
+			AddObject(new ContainerObject(type, instance.GetType(), instance));
 			return this;
 		}
 

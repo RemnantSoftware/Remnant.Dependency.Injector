@@ -12,16 +12,19 @@
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
-    <PackageReference Include="Remnant.Dependency.Autofac" Version="1.0.0" />
-    <PackageReference Include="Remnant.Dependency.CastleWindsor" Version="1.0.0" />
-    <PackageReference Include="Remnant.Dependency.Injector" Version="1.0.2" />
+    <PackageReference Include="Remnant.Dependency.Injector" Version="1.0.4" />
     <PackageReference Include="Remnant.Dependency.Injector.Analyzer" Version="1.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Remnant.Dependency.Ninject" Version="1.0.0" />
-    <PackageReference Include="Remnant.Dependency.SimpleInjector" Version="1.0.0" />
-    <PackageReference Include="Remnant.Dependency.Unity" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Remnant.Dependency.Autofac\Remnant.Dependency.Autofac.csproj" />
+    <ProjectReference Include="..\..\Remnant.Dependency.CastleWindsor\Remnant.Dependency.CastleWindsor.csproj" />
+    <ProjectReference Include="..\..\Remnant.Dependency.Ninject\Remnant.Dependency.Ninject.csproj" />
+    <ProjectReference Include="..\..\Remnant.Dependency.SimpleInjector\Remnant.Dependency.SimpleInjector.csproj" />
+    <ProjectReference Include="..\..\Remnant.Dependency.Unity\Remnant.Dependency.Unity.csproj" />
   </ItemGroup>
 
 </Project>

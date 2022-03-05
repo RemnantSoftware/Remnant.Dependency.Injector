@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Remnant.Dependency.Injector</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <authors>Neill Verreynne</authors>
     <owners>Neill Verreynne</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Container for dependency injection using pull pattern (no transient types needed)</description>
+    <description>Container for dependency injection using pull pattern. Caters for exisiting DI solutions via adapters.</description>
     <dependencies>
 
     </dependencies>

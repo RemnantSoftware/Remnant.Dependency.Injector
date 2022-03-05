@@ -10,13 +10,18 @@ namespace Remnant.Dependeny.Injector.Tests
 		public TestAutoFac()
 		{
 			var autofac = new Autofac.ContainerBuilder();
-			Container.Create("MyContainer", new AutofacAdapter(autofac));
+			var adapter = new AutofacAdapter(autofac);
+			Container.Create("MyContainer", adapter);
 			Container.Instance.Register<IAnimal>(new Dog());
+			Container.Instance.Register<Dog>(new Dog());
 
 			autofac.Build() ;
 			_container = Container.Instance;
 
+			Assert.IsNotNull(adapter.Resolve<IAnimal>());
+			Assert.IsNotNull(adapter.Resolve<Dog>());
 			Assert.IsNotNull(autofac.Resolve<IAnimal>());
+			Assert.IsNotNull(autofac.Resolve<Dog>());
 		}
 	}
 }
