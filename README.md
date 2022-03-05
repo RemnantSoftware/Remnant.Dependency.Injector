@@ -166,7 +166,7 @@ public partial class PurchaseOrder
         
     public PurchaseOrder()
     {
-       //...do some stuff but injected fields will ne null   
+       //...do some stuff but injected fields will be null   
     }
 }
         
