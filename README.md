@@ -12,7 +12,7 @@ The packages published to nuget.org are still in flux mode and will be stable on
 - An extension method 'Resolve<<TType>>' is implemented on 'object' to allow any objects to call the container. 
 - You can use the [Inject] attribute on fields which will automatically inject the object.
 - The pull pattern nullifies the need for transient objects (cause no wiring dependencies needed). So basically only singletons need to be registered.
-- Injecting on methods and properties (fine grain injection) in my humble opinion is a bad pattern to follow. If ou are currently using such pattern, this solution still allows you to resolve whatever, where ever you want, be it for properties or method parameters as well.
+- Injecting on methods and properties (fine grain injection) in my humble opinion is a bad pattern to follow. If you are currently using such a pattern, this solution still allows you to resolve whatever, where ever you want, be it for properties or method parameters as well.
 
 > **Note**: To use [Inject] attribute to decorate class fields, the class must be specified as partial.
         
