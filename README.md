@@ -174,7 +174,7 @@ var purchaseOrder = PurchaseOrder.Create(); // this will instantiate the class a
 ```
         
 ```csharp
-// Example of calling 'Inject' explicitly on your implemented constructor before accessing the injected field
+// Example of calling 'Inject' explicitly on your implemented constructor before accessing the injected fields
 public partial class PurchaseOrder
 {
     [Inject]
