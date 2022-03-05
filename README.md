@@ -59,6 +59,21 @@ class Program
 }
 ```
         
+If you need to perform additional registrations/resolves at other places, you can access the instance of the container as follows:
+```csharp        
+class Program
+{
+    public static async Task Initializ()
+    {
+          Container
+            .Instance
+            .Register<IConfiguration>(new AzureAppConfig());
+    }
+}
+```
+ 
+----------        
+        
 ### Manually Resolve (not using the [Inject] attribute)
 
 Call resolve to obtain objects from the container:
@@ -93,6 +108,8 @@ public class PurchaseOrder
 }
 ```
 
+-------
+        
 ### [Inject] Attribute
 
 By decorating your fields with the inject attribute, you dont have to specify 'Resolve' explicitly.
@@ -133,4 +150,40 @@ public partial class PurchaseOrder
 }
 ```
 
-
+```csharp
+// Example of using the static 'Create', fields cannot be read only
+public partial class PurchaseOrder
+{
+    [Inject]
+    private ILog _logger;
+    
+    [Inject] 
+    private IRepository _repository;
+        
+    public PurchaseOrder()
+    {
+       //...do some stuff   
+    }
+}
+        
+var purchaseOrder = PurchaseOrder.Create();
+```
+        
+```csharp
+// Example of calling 'Inject' explicitly, fields cannot be read only
+public partial class PurchaseOrder
+{
+    [Inject]
+    private ILog _logger;
+    
+    [Inject] 
+    private IRepository _repository;
+    
+    public PurchaseOrder()
+    {
+        Inject();
+        
+       //...do some stuff   
+    }
+}
+```
