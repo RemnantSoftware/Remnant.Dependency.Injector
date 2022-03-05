@@ -170,7 +170,7 @@ var purchaseOrder = PurchaseOrder.Create();
 ```
         
 ```csharp
-// Example of calling 'Inject' explicitly, fields cannot be read only
+// Example of calling 'Inject' explicitly on your implemented constructor before accessing the injected field
 public partial class PurchaseOrder
 {
     [Inject]
