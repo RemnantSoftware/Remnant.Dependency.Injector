@@ -39,8 +39,8 @@ The packages published to nuget.org are still in flux mode and will be stable on
         
 > https://github.com/RemnantSoftware/Remnant.Dependency.SimpleInjector
   
-  ~ Additional adapters for other DI solutions can be coded by implementing the interface 'IContainer'. 
-  ~ To access the internal container directly, you can call 'Container.Instance.InternalContainer<TContainer>()' method.
+  * Additional adapters for other DI solutions can be coded by implementing the interface 'IContainer'. 
+  * To access the internal container directly, you can call 'Container.Instance.InternalContainer<>()' method, please see adapters repos for examples.
         
 ## Usage:
 
