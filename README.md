@@ -26,7 +26,7 @@ The packages published to nuget.org are still in flux mode and will be stable on
 
 - Anaylzer package to use [Inject] attribute: 
 
-        Install-Package Remnant.Dependency.Injector.Analyzer -Version 1.0.3
+        Install-Package Remnant.Dependency.Injector.Analyzer -Version 1.0.4
 
 > **Note**: I suggest you install both packages and use [Inject] attribute for injection.
         
