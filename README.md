@@ -23,6 +23,11 @@ The packages published to nuget.org are still in flux mode and will be stable on
 - Core package excluding the analyzer: 
 
         Install-Package Remnant.Dependency.Injector -Version 1.0.5
+
+- Anaylzer package to use [Inject] attribute: 
+
+        Install-Package Remnant.Dependency.Injector.Analyzer
+
         
 ## Adapters for other DI containers:
         
