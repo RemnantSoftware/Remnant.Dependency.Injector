@@ -14,13 +14,13 @@ namespace Remnant.Dependency.Injector
 	{
 		private static string _name;
 		private static IContainer _container = null;
-		private readonly List<ContainerObject> _containerObjects = new List<ContainerObject>();
 
 		/// <summary>
 		/// Construct the global domain container. There can only be one container constructed within your app domain.
 		/// There is no need to keep a reference to the container after you registered all your transients/singletons.
 		/// </summary>
 		/// <param name="name">Provide a name for the container</param>
+		/// <param name="container">If not specified then Remnant's own container is used, otherwise the container you want to use</param>
 		/// <returns>Returns the container instance</returns>
 		/// <exception cref="ArgumentNullException"></exception>
 		/// <exception cref="InvalidOperationException"></exception>
@@ -58,21 +58,18 @@ namespace Remnant.Dependency.Injector
 		/// Resolve using static on container class
 		/// </summary>
 		/// <typeparam name="TType">The type that was registered</typeparam>
-		/// <returns>Returns a transient or singleton instance of the specified type</returns>
+		/// <returns>Returns a singleton instance of the specified type</returns>
 		public static TType Resolve<TType>()
 			where TType : class
 		{
+			if (_container == null)
+				throw new InvalidOperationException("The container is not created. First call 'Create()'.");
+
 			return _container?.Resolve<TType>();
 		}
 
 		private Container()
 		{
-		}
-
-		private ContainerObject AddObject(ContainerObject containerObject)
-		{
-			_containerObjects.Add(containerObject);
-			return containerObject;
 		}
 
 		/// <summary>
@@ -116,7 +113,7 @@ namespace Remnant.Dependency.Injector
 		}
 
 		/// <summary>
-		/// Register a transient with the container
+		/// Register a singleton type with the container
 		/// </summary>
 		/// <typeparam name="TType">The type that will be used to resolve and construct entry</typeparam>
 		/// <returns>Returns the container</returns>
@@ -127,7 +124,7 @@ namespace Remnant.Dependency.Injector
 		}
 
 		/// <summary>
-		/// Register a transient with the container
+		/// Register a singleton type with the container
 		/// </summary>
 		/// <typeparam name="TType">The type that will be used to resolve entry</typeparam>
 		/// <typeparam name="TObject">The type that will be constructed and return on resolve</typeparam>
@@ -180,6 +177,20 @@ namespace Remnant.Dependency.Injector
 			where TType : class
 		{
 			return _container.ResolveInstance<TType>();	
+		}
+
+		/// <summary>
+		/// Returns the internal container that to be used for direct access
+		/// </summary>
+		/// <typeparam name="TContainer"></typeparam>
+		/// <returns></returns>
+		/// <exception cref="InvalidCastException">Specify the type for the internal container. Exception will be thrown if casting fails.</exception>
+		public TContainer InternalContainer<TContainer>() where TContainer : class
+		{
+			if (this as TContainer == null)
+				throw new InvalidCastException($"The internal container is of type {this.GetType().Name} and cannot be cast to {typeof(TContainer).Name}");
+
+			return this as TContainer;
 		}
 	}
 }

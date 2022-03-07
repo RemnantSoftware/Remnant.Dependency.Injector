@@ -13,6 +13,7 @@ namespace Remnant.Dependeny.Injector.Tests
 			var adapter = new CastleAdapter(new WindsorContainer());
 			SetContainer(Container.Create("MyContainer", adapter));
 
+			Assert.IsNotNull(Container.Instance.InternalContainer<WindsorContainer>());
 			Assert.IsNotNull(adapter.Resolve<IAnimal>());
 			Assert.IsNotNull(adapter.Resolve<Dog>());
 		}

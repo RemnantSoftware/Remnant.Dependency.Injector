@@ -10,7 +10,7 @@ namespace Remnant.Dependency.Injector
 		/// </summary>
 		/// <typeparam name="TType">The type to resolve</typeparam>
 		/// <param name="source"></param>
-		/// <returns>Returns a transient or singleton instance</returns>
+		/// <returns>Returns the singleton instance</returns>
 		/// <exception cref="NullReferenceException"></exception>
 		/// <exception cref="ArgumentException"></exception>
 		public static TType Resolve<TType>(this object source)

@@ -22,13 +22,7 @@ The packages published to nuget.org are still in flux mode and will be stable on
 
 - Core package excluding the analyzer: 
 
-        Install-Package Remnant.Dependency.Injector -Version 1.0.4
-
-- Anaylzer package to use [Inject] attribute: 
-
-        Install-Package Remnant.Dependency.Injector.Analyzer -Version 1.0.3
-
-> **Note**: I suggest you install both packages and use [Inject] attribute for injection.
+        Install-Package Remnant.Dependency.Injector -Version 1.0.5
         
 ## Adapters for other DI containers:
         
@@ -43,6 +37,7 @@ The packages published to nuget.org are still in flux mode and will be stable on
 > https://github.com/RemnantSoftware/Remnant.Dependency.SimpleInjector
   
   ~ Additional adapters for other DI solutions can be coded by implementing the interface 'IContainer'. 
+  ~ To access the internal container directly, you can call 'Container.Instance.InternalContainer<TContainer>()' method.
         
 ## Usage:
 

@@ -5,14 +5,13 @@ using System.Linq;
 
 namespace Remnant.Dependency.Injector
 {
+
+	/// <summary>
+	/// Default Remnant container 
+	/// </summary>
 	public sealed class RemnantContainer : IContainer
 	{
 		private readonly List<ContainerObject> _containerObjects = new List<ContainerObject>();
-
-		public RemnantContainer()
-		{
-
-		}
 
 		public static TType Resolve<TType>()
 			where TType : class
@@ -101,6 +100,14 @@ namespace Remnant.Dependency.Injector
 			return containerObject.Object != null
 				? (TType)containerObject.Object
 				: (TType)Activator.CreateInstance(containerObject.ObjectType);	
+		}
+
+		public TContainer InternalContainer<TContainer>() where TContainer : class
+		{
+			if (this as TContainer == null)
+				throw new InvalidCastException($"The internal container is of type {this.GetType().FullName} and cannot be cast to {typeof(TContainer).FullName}");
+
+			return this as TContainer;
 		}
 	}
 }

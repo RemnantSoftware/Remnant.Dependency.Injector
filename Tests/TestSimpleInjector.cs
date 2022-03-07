@@ -12,6 +12,7 @@ namespace Remnant.Dependeny.Injector.Tests
 			var adapter = new SimpleInjectorAdapter(new global::SimpleInjector.Container());
 			SetContainer(Container.Create("MyContainer", adapter));
 
+			Assert.IsNotNull(Container.Instance.InternalContainer<global::SimpleInjector.Container>());
 			Assert.IsNotNull(adapter.Resolve<IAnimal>());
 			Assert.IsNotNull(adapter.Resolve<Dog>());
 		}

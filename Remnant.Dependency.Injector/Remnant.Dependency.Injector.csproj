@@ -10,7 +10,7 @@
     <PackageIcon>Remnant.png</PackageIcon>
     <PackageTags>container;inject;dependency;transient;singleton;injection;pull;global</PackageTags>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/RemnantSoftware/Remnant.Dependency.Injector</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -30,11 +30,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Remnant.Dependency.Injector.Analyzer" Version="1.0.3">
+    <PackageReference Include="Remnant.Dependency.Injector.Analyzer" Version="1.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Remnant.Dependency.Interface" Version="1.0.1" />
+    <PackageReference Include="Remnant.Dependency.Interface" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>

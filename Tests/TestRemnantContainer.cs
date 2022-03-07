@@ -11,6 +11,7 @@ namespace Remnant.Dependeny.Injector.Tests
 		public void Should_be_able_to_create_container()
 		{
 			Assert.IsNotNull(Container.Create("MyContainer"));
+			Assert.IsNotNull(Container.Instance.InternalContainer<RemnantContainer>());
 		}
 
 		[Test]
@@ -24,7 +25,9 @@ namespace Remnant.Dependeny.Injector.Tests
 		{
 			Container.Instance.Clear();
 			Container.Instance.Register<IAnimal>(new Dog());
+			Container.Instance.Register<Dog>(new Dog());
 			Assert.IsTrue(new Dog().Sound == new object().Resolve<IAnimal>().Sound);
+			Assert.IsTrue(new Dog().Sound == new object().Resolve<Dog>().Sound);
 		}
 
 		[Test]
@@ -32,8 +35,10 @@ namespace Remnant.Dependeny.Injector.Tests
 		{
 			Container.Instance.Clear();
 			Container.Instance.Register<IAnimal>(new Dog());
+			Container.Instance.Register<Dog>(new Dog());
 			var animalSound = new AnimalSoundInjectOnField();
 			Assert.IsTrue(new Dog().Sound == animalSound.MakeSound());
+			Assert.IsTrue(new Dog().Sound == new object().Resolve<Dog>().Sound);
 
 			Container.Instance.Clear();
 			Container.Instance.Register<IAnimal>(new Cat());
