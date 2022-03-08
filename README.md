@@ -141,11 +141,8 @@ The 'Type' passed to the [Inject] attribute is optional, and the underlying deco
 // Example of using the inferred field's data type
 public partial class PurchaseOrder
 {
-    [Inject]
-    private readonly ILog _logger;
-    
-    [Inject] 
-    private readonly IRepository _repository;
+    [Inject] private readonly ILog _logger;    
+    [Inject] private readonly IRepository _repository;
 }
 ```
 
