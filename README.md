@@ -1,4 +1,4 @@
-# Remnant Dependency Injector (beta) - official release will be in Septemeber 2022.
+# Remnant Dependency Injector (beta) - official release will be in September/October 2022.
 
 The solution and adapters for external (3rd party) DI containers are still in beta.
 The packages published to nuget.org are still in flux mode and will be stable once beta becomes an official release.
