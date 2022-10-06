@@ -1,3 +1,4 @@
+using Autofac;
 using NUnit.Framework;
 using Remnant.Dependency.Autofac;
 using Remnant.Dependency.Injector;
@@ -12,14 +13,14 @@ namespace Remnant.Dependeny.Injector.Tests
 			var autofac = new Autofac.ContainerBuilder();
 			var adapter = new AutofacAdapter(autofac);
 
-			Container.Create("MyContainer", adapter);
-			Container.Instance.Register<IAnimal>(new Dog());
-			Container.Instance.Register<Dog>(new Dog());
+			SetContainer(Container.Create("MyContainer", adapter));
+
+			Container.Register<IAnimal>(new Dog());
+			Container.Register<Dog>(new Dog());
 
 			autofac.Build() ;
-			_container = Container.Instance;
 
-			Assert.IsNotNull(Container.Instance.InternalContainer<Autofac.IContainer>());
+			Assert.IsNotNull(Container.InternalContainer<IContainer>());
 			Assert.IsNotNull(adapter.Resolve<IAnimal>());
 			Assert.IsNotNull(adapter.Resolve<Dog>());
 			Assert.IsNotNull(autofac.Resolve<IAnimal>());

@@ -11,7 +11,7 @@ namespace Remnant.Dependeny.Injector.Tests
 		public void Should_be_able_to_create_container()
 		{
 			Assert.IsNotNull(Container.Create("MyContainer"));
-			Assert.IsNotNull(Container.Instance.InternalContainer<RemnantContainer>());
+			Assert.IsNotNull(Container.InternalContainer<RemnantContainer>());
 		}
 
 		[Test]
@@ -23,9 +23,9 @@ namespace Remnant.Dependeny.Injector.Tests
 		[Test]
 		public void Should_be_able_to_resolve_from_object()
 		{
-			Container.Instance.Clear();
-			Container.Instance.Register<IAnimal>(new Dog());
-			Container.Instance.Register<Dog>(new Dog());
+			Container.Clear();
+			Container.Register<IAnimal>(new Dog());
+			Container.Register<Dog>(new Dog());
 			Assert.IsTrue(new Dog().Sound == new object().Resolve<IAnimal>().Sound);
 			Assert.IsTrue(new Dog().Sound == new object().Resolve<Dog>().Sound);
 		}
@@ -33,15 +33,15 @@ namespace Remnant.Dependeny.Injector.Tests
 		[Test]
 		public void Should_be_able_to_inject_on_field_declaration()
 		{
-			Container.Instance.Clear();
-			Container.Instance.Register<IAnimal>(new Dog());
-			Container.Instance.Register<Dog>(new Dog());
+			Container.Clear();
+			Container.Register<IAnimal>(new Dog());
+			Container.Register<Dog>(new Dog());
 			var animalSound = new AnimalSoundInjectOnField();
 			Assert.IsTrue(new Dog().Sound == animalSound.MakeSound());
 			Assert.IsTrue(new Dog().Sound == new object().Resolve<Dog>().Sound);
 
-			Container.Instance.Clear();
-			Container.Instance.Register<IAnimal>(new Cat());
+			Container.Clear();
+			Container.Register<IAnimal>(new Cat());
 			animalSound = new AnimalSoundInjectOnField();
 			Assert.IsTrue(new Cat().Sound == animalSound.MakeSound());
 		}
@@ -49,13 +49,13 @@ namespace Remnant.Dependeny.Injector.Tests
 		[Test]
 		public void Should_be_able_to_inject_on_constructor_declaration()
 		{
-			Container.Instance.Clear();
-			Container.Instance.Register<IAnimal>(new Dog());
+			Container.Clear();
+			Container.Register<IAnimal>(new Dog());
 			var animalSound = new AnimalSoundInjectOnConstructor();
 			Assert.IsTrue(new Dog().Sound == animalSound.MakeSound());
 
-			Container.Instance.Clear();
-			Container.Instance.Register<IAnimal>(new Cat());
+			Container.Clear();
+			Container.Register<IAnimal>(new Cat());
 			animalSound = new AnimalSoundInjectOnConstructor();
 			Assert.IsTrue(new Cat().Sound == animalSound.MakeSound());
 		}
@@ -63,13 +63,13 @@ namespace Remnant.Dependeny.Injector.Tests
 		[Test]
 		public void Should_be_able_to_inject_using_inject_attribute()
 		{
-			Container.Instance.Clear();
-			Container.Instance.Register<IAnimal>(new Dog());
+			Container.Clear();
+			Container.Register<IAnimal>(new Dog());
 			var animalSound = new AnimalSoundInjectUsingAttr();
 			Assert.IsTrue(new Dog().Sound == animalSound.MakeSound());
 
-			Container.Instance.Clear();
-			Container.Instance.Register<IAnimal>(new Cat());
+			Container.Clear();
+			Container.Register<IAnimal>(new Cat());
 			animalSound = new AnimalSoundInjectUsingAttr();
 			Assert.IsTrue(new Cat().Sound == animalSound.MakeSound());
 		}
@@ -77,13 +77,13 @@ namespace Remnant.Dependeny.Injector.Tests
 		[Test]
 		public void Should_be_able_to_inject_using_create_due_to_existing_constructor()
 		{
-			Container.Instance.Clear();
-			Container.Instance.Register<IAnimal>(new Dog());
+			Container.Clear();
+			Container.Register<IAnimal>(new Dog());
 			var animalSound = AnimalSoundInjectUsingCreate.Create();
 			Assert.IsTrue(new Dog().Sound == animalSound.MakeSound());
 
-			Container.Instance.Clear();
-			Container.Instance.Register<IAnimal>(new Cat());
+			Container.Clear();
+			Container.Register<IAnimal>(new Cat());
 			animalSound = AnimalSoundInjectUsingCreate.Create();
 			Assert.IsTrue(new Cat().Sound == animalSound.MakeSound());
 		}

@@ -10,7 +10,7 @@
     <PackageIcon>Remnant.png</PackageIcon>
     <PackageTags>container;inject;dependency;transient;singleton;injection;pull;global</PackageTags>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Version>1.0.5</Version>
+    <Version>1.1.0</Version>
     <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/RemnantSoftware/Remnant.Dependency.Injector</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

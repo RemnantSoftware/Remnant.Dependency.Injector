@@ -13,8 +13,8 @@ namespace Remnant.Dependeny.Injector.Tests
 		public void SetContainer(IContainer container)
 		{
 			_container = container;
-			Container.Instance.Register<IAnimal>(new Dog());
-			Container.Instance.Register<Dog>(new Dog());
+			Container.Register<IAnimal>(new Dog());
+			Container.Register<Dog>(new Dog());
 		}
 
 		[Test]

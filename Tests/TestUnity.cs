@@ -13,7 +13,7 @@ namespace Remnant.Dependeny.Injector.Tests
 			var adapter = new UnityAdapter(new UnityContainer());
 			SetContainer(Container.Create("MyContainer", adapter));
 
-			Assert.IsNotNull(Container.Instance.InternalContainer<UnityContainer>());
+			Assert.IsNotNull(Container.InternalContainer<UnityContainer>());
 			Assert.IsNotNull(adapter.Resolve<IAnimal>());
 			Assert.IsNotNull(adapter.Resolve<Dog>());
 		}

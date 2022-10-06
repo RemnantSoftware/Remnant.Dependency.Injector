@@ -13,7 +13,7 @@ namespace Remnant.Dependeny.Injector.Tests
 			var adapter = new NinjectAdapter(new StandardKernel());	
 			SetContainer(Container.Create("MyContainer", adapter));
 
-			Assert.IsNotNull(Container.Instance.InternalContainer<StandardKernel>());
+			Assert.IsNotNull(Container.InternalContainer<StandardKernel>());
 			Assert.IsNotNull(adapter.Resolve<IAnimal>());
 			Assert.IsNotNull(adapter.Resolve<Dog>());
 		}
