@@ -1,5 +1,4 @@
 # Remnant Dependency Injector
-The solution and adapters for external (3rd party) DI containers are still in beta.
 
 ## Overview
 
@@ -65,7 +64,7 @@ class Program
 {
     public static async Task Initialize()
     {
-          Container.egister<IConfiguration>(new AzureAppConfig());
+          Container.Register<IConfiguration>(new AzureAppConfig());
     }
 }
 ```
