@@ -1,6 +1,5 @@
 # Remnant Dependency Injector
 The solution and adapters for external (3rd party) DI containers are still in beta.
-The packages published to nuget.org are still in flux mode and will be stable once beta becomes an official release.
 
 ## Overview
 
